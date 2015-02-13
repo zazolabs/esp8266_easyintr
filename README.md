@@ -4,7 +4,7 @@ Easy Interrupt Management for ESP8266
 As the SDK allows only ONE gpio interrupt handler a little dispatcher can help with code reuse.
 
 Usage:
-
+```
 int main(...) {
 	/* Call ei_init early before modules using it  */
 	ei_init();
@@ -38,3 +38,5 @@ void module_dont_bother_me()
 	/* Do not call module ISR any more */
 	ei_detach(GPIO_NUM);
 }
+```
+
