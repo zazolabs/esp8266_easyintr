@@ -42,7 +42,7 @@ struct ei_handler {
 
 static ei_handler ei_vects[15];
 
-static void ICACHE_FLASH_ATTR ei_def_intr(void *data)
+static void ei_def_intr(void *data)
 {
 	int bitno = (int)data;
 	os_printf("Unhandled intr:%d\n", bitno);
@@ -67,7 +67,7 @@ bool ICACHE_FLASH_ATTR ei_detach(uint8_t gpio_pin)
 }
 
 
-LOCAL void ICACHE_FLASH_ATTR  ei_intr_dispatch(void)
+LOCAL void ei_intr_dispatch(void)
 {
 	uint32_t gpio_status = GPIO_REG_READ(GPIO_STATUS_ADDRESS);
 	int i;
