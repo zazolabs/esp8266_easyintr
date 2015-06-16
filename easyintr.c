@@ -96,12 +96,13 @@ void ICACHE_FLASH_ATTR ei_init(void)
 
 void ICACHE_FLASH_ATTR ei_attach(uint8 gpio_pin, uint32 gpio_name, uint8 gpio_func, void (*vect)(void *), void *data)
 {
-	ETS_GPIO_INTR_DISABLE();
-
 	if (gpio_pin > sizeof(ei_vects)/sizeof(ei_vects[0])) {
 		os_printf("Invalid GPIO:%d\n", gpio_pin);
 		return;
 	}
+
+	ETS_GPIO_INTR_DISABLE();
+
 	ei_vects[gpio_pin].isr = vect;
 	ei_vects[gpio_pin].data = data;
 
